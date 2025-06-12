@@ -431,6 +431,13 @@
     width: 13px;
     background: url("../images/dist/quote.svg") no-repeat center/cover;
   }
+
+  &--noquote {
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
 }
 
 .font-monrope {
