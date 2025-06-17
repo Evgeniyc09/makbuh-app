@@ -58,7 +58,9 @@
     border-radius: 6px;
 
     img {
-      margin: 0 8px 0 0;
+      width: 17px;
+      margin: 0 4px 0 0;
+      flex-shrink: 0;
     }
 
     p {
