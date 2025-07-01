@@ -785,3 +785,50 @@
     }
   }
 }
+.compass__settings-btn {
+  position: fixed;
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 130px;
+  text-decoration: none;
+  color: white;
+  border-radius: 4px;
+  padding: 0 10px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    #28bac4 -16.19%,
+    #47e8f2 51.79%,
+    #5ec1c7 119.05%
+  );
+  border-radius: 10px;
+  -webkit-box-shadow: 0 4px 24.2px rgba(87, 84, 84, 0.25);
+  box-shadow: 0 4px 24.2px svg {
+    margin-right: 8px;
+  }
+}
+
+.modal__save-btn {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    90deg,
+    #28bac4 -16.19%,
+    #47e8f2 51.79%,
+    #5ec1c7 119.05%
+  );
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+}

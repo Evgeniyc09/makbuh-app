@@ -1,0 +1,392 @@
+<!--#set var="title" value="OptimizedHTML 5" -->
+<!--#include virtual="./parts/header.html" -->
+<div class="page page__bg page__compas">
+  <!--#include virtual="./parts/head.html" -->
+
+  <div id="map"></div>
+
+  <div id="compass-wrap">
+    <svg id="compass-svg" width="360" height="360" viewBox="0 0 360 360">
+      <!-- Картинка компаса -->
+      <g id="compass-group">
+        a
+        <image href="../images/dist/compas.png" x="0" y="0" width="360" height="360" />
+      </g>
+      <!-- Красный курсор (стрелка) -->
+      <g id="cursor-group">
+        <!-- Вертикальная линия вверх от центра (на половину компаса) -->
+        <line x1="180" y1="180" x2="180" y2="0" stroke="red" stroke-width="3" stroke-linecap="round" />
+        <!-- Горизонтальная перекладина в центре -->
+        <line x1="140" y1="180" x2="220" y2="180" stroke="red" stroke-width="3" stroke-linecap="round" />
+        <!-- Прямоугольник (голова с градусом) -->
+        <rect id="cursor-head" x="155" y="0" width="50" height="32" rx="6" fill="red" />
+        <!-- Текст угла -->
+        <text id="cursor-angle-label" x="180" y="20" text-anchor="middle" fill="white" font-size="20"
+          font-family="sans-serif" alignment-baseline="middle" font-weight="bold">0°</text>
+      </g>
+    </svg>
+  </div>
+  <div class="compass-back">
+    <div class="compass-back__items">
+      <div class="compass-back__item compass-back__item--1">
+        <div class="fly-star">
+          <span>3</span>
+          <span>6</span>
+          <span>1</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+      <div class="compass-back__item compass-back__item--2">
+        <div class="fly-star">
+          <span>1</span>
+          <span>5</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--3">
+        <div class="fly-star">
+          <span>1</span>
+          <span>7</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--4">
+        <div class="fly-star">
+          <span>2</span>
+          <span>1</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--5">
+        <div class="fly-star">
+          <span>1</span>
+          <span>2</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--6">
+        <div class="fly-star">
+          <span>2</span>
+          <span>9</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--7">
+        <div class="fly-star">
+          <span>2</span>
+          <span>5</span>
+          <span>8</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--8">
+        <div class="fly-star">
+          <span>2</span>
+          <span>5</span>
+          <span>8</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+
+      <div class="compass-back__item compass-back__item--center">
+        <div class="fly-star">
+          <span>2</span>
+          <span>9</span>
+          <span>2</span>
+          <div class="flyingStartsYear">9</div>
+          <div class="flyingStartsMonth">2</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="" class="compass__settings-btn" data-modal-open="modalExample">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
+      class="lucide lucide-settings2-icon lucide-settings-2">
+      <path d="M14 17H5" />
+      <path d="M19 7h-9" />
+      <circle cx="17" cy="17" r="3" />
+      <circle cx="7" cy="7" r="3" />
+    </svg>
+    Параметры
+  </a>
+  <div id="modalExample" class="modal">
+    <div class="modal__overlay" data-modal-close></div>
+    <div class="modal__content" data-city-search="from" data-hidden-input="#hidden-from">
+      <button class="modal__close" data-modal-close></button>
+      <h2 class="modal__title">Параметры</h2>
+      <div id="ui">
+        Повернуть компас: <input id="compass-angle" type="number" value="0" step="1" min="0" max="359"> °
+      </div>
+      <div id="DegreeCorret" class="FormBlock">
+
+        <div class="checkbox-wrapper">
+          <input type="checkbox" class="CheckBox" id="FStarsN" name="FStarsN" checked>
+          <label for="FStarsN">Натальные летящие звезды</label>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <input type="checkbox" class="CheckBox" id="FStarsY" name="FStarsY" checked>
+          <label for="FStarsY">Текущие звезды <b>года</b></label>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <input type="checkbox" class="CheckBox" id="FStarsM" name="FStarsM" checked>
+          <label for="FStarsM">Текущие звезды <b>месяца</b></label>
+        </div>
+
+        <div class="checkbox-wrapper">
+          <input type="checkbox" class="CheckBox" id="FStarsC" name="FStarsC">
+          <label for="FStarsC">Центральные летящие звезды</label>
+        </div>
+
+      </div>
+      <button class="modal__save-btn" data-modal-close>Сохранить</button>
+      <button class="modal__close" data-modal-close></button>
+    </div>
+  </div>
+  <!--#include virtual="./parts/nav.html" -->
+</div>
+<!--#include virtual="./parts/footer.html" -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=21e9bb68-c626-48cd-9ec6-caba33922726&lang=ru_RU"
+  type="text/javascript"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let map;
+    let cursorAngle = 0;
+    let lastCoords = null;
+    let debounceTimeout = null;
+
+    function fetchCompassData(coords, cursorAngle) {
+      setTimeout(() => {
+        const data = {
+          stars: [
+            { sector: 1, values: [3, 6, 1], year: 9, month: 2 },
+            { sector: 2, values: [1, 5, 2], year: 9, month: 2 },
+            { sector: 3, values: [1, 7, 2], year: 9, month: 2 },
+            { sector: 4, values: [2, 1, 2], year: 9, month: 2 },
+            { sector: 5, values: [1, 2, 2], year: 9, month: 2 },
+            { sector: 6, values: [2, 9, 2], year: 9, month: 2 },
+            { sector: 7, values: [2, 5, 8], year: 9, month: 2 },
+            { sector: 8, values: [2, 5, 8], year: 9, month: 2 },
+            { sector: "center", values: [2, 9, 2], year: 9, month: 2 }
+          ]
+        };
+        fillCompassItems(data.stars);
+      }, 500);
+    }
+
+    function debounceFetchCompassData(coords, cursorAngle) {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        fetchCompassData(coords, cursorAngle);
+
+        console.log('запрос ушел')
+      }, 400);
+    }
+
+    function fillCompassItems(stars) {
+      stars.forEach(star => {
+        const sel = star.sector === 'center'
+          ? '.compass-back__item--center'
+          : `.compass-back__item--${star.sector}`;
+        const item = document.querySelector(sel);
+        if (!item) return;
+        const flyStar = item.querySelector('.fly-star');
+        if (!flyStar) return;
+
+        flyStar.innerHTML = '';
+
+        star.values.forEach(val => {
+          const span = document.createElement('span');
+          span.textContent = val;
+          flyStar.appendChild(span);
+        });
+
+        const yearDiv = document.createElement('div');
+        yearDiv.className = 'flyingStartsYear';
+        yearDiv.textContent = star.year;
+        flyStar.appendChild(yearDiv);
+
+        const monthDiv = document.createElement('div');
+        monthDiv.className = 'flyingStartsMonth';
+        monthDiv.textContent = star.month;
+        flyStar.appendChild(monthDiv);
+      });
+    }
+
+    function updateCoordsText(coords) {
+      console.log(`Широта: ${coords[0].toFixed(6)}, Долгота: ${coords[1].toFixed(6)}`);
+    }
+
+    function onCoordsChange(coords) {
+      lastCoords = coords;
+      debounceFetchCompassData(coords, cursorAngle);
+      updateCoordsText(coords);
+    }
+
+    ymaps.ready(function () {
+      function setupMap(coords, balloonContent) {
+        map = new ymaps.Map("map", { center: coords, zoom: 10 });
+        map.geoObjects.add(new ymaps.Placemark(coords, { balloonContent }));
+
+        onCoordsChange(coords);
+
+        map.events.add('boundschange', function () {
+          const center = map.getCenter();
+          onCoordsChange(center);
+        });
+      }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const userCoords = [position.coords.latitude, position.coords.longitude];
+            setupMap(userCoords, "Вы здесь");
+          },
+          function () {
+            const defaultCoords = [43.25368, 76.90275];
+            setupMap(defaultCoords, "Алматы");
+          }
+        );
+      } else {
+        const defaultCoords = [43.25368, 76.90275];
+        setupMap(defaultCoords, "Алматы");
+      }
+    });
+
+    const compassItems = document.querySelector('.compass-back__items');
+
+    const compassGroup = document.getElementById('compass-group');
+    const compassAngleInput = document.getElementById('compass-angle');
+    compassAngleInput.addEventListener('input', () => {
+      const angle = Number(compassAngleInput.value) || 0;
+      compassGroup.setAttribute('transform', `rotate(${angle},180,180)`);
+      compassItems.style.transform = `rotate(${angle}deg)`;
+      setCursorAngle(cursorAngle);
+      updateCabins(angle);
+    });
+
+    const cursorGroup = document.getElementById('cursor-group');
+    const cursorHead = document.getElementById('cursor-head');
+    let dragging = false;
+
+    function setCursorAngle(angle) {
+      cursorAngle = angle;
+      cursorGroup.setAttribute('transform', `rotate(${cursorAngle},180,180)`);
+      const compassAngle = Number(compassAngleInput.value) || 0;
+      let displayAngle = (cursorAngle - compassAngle + 360) % 360;
+      document.getElementById('cursor-angle-label').textContent = `${Math.round(displayAngle)}°`;
+      if (lastCoords) {
+        debounceFetchCompassData(lastCoords, cursorAngle);
+      }
+    }
+    setCursorAngle(cursorAngle);
+
+    function getAngleFromCenter(clientX, clientY) {
+      const rect = document.getElementById('compass-svg').getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = clientX - cx;
+      const dy = clientY - cy;
+      let angle = Math.atan2(dy, dx) * 180 / Math.PI;
+      angle = (angle + 90 + 360) % 360;
+      return angle;
+    }
+
+    cursorHead.addEventListener('mousedown', function (e) {
+      e.preventDefault();
+      dragging = true;
+      document.body.style.userSelect = "none";
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!dragging) return;
+      const angle = getAngleFromCenter(e.clientX, e.clientY);
+      setCursorAngle(angle);
+    });
+
+    window.addEventListener('mouseup', function () {
+      dragging = false;
+      document.body.style.userSelect = "";
+    });
+
+    cursorHead.addEventListener('touchstart', function (e) {
+      e.preventDefault();
+      dragging = true;
+      document.body.style.userSelect = "none";
+    });
+
+    window.addEventListener('touchmove', function (e) {
+      if (!dragging) return;
+      const touch = e.touches[0];
+      const angle = getAngleFromCenter(touch.clientX, touch.clientY);
+      setCursorAngle(angle);
+    });
+
+    window.addEventListener('touchend', function () {
+      dragging = false;
+      document.body.style.userSelect = "";
+    });
+
+    function updateCabins(compassAngle) {
+      const items = document.querySelectorAll('.compass-back__item');
+      items.forEach(item => {
+        item.style.transform = `rotate(${-compassAngle}deg)`;
+      });
+    }
+
+    function updateFlyingStarsVisibility() {
+      const natalCheckbox = document.getElementById('FStarsN');
+      const yearCheckbox = document.getElementById('FStarsY');
+      const monthCheckbox = document.getElementById('FStarsM');
+      const centerCheckbox = document.getElementById('FStarsC');
+
+      document.querySelectorAll('.fly-star').forEach(el => {
+        if (!natalCheckbox.checked) {
+          el.classList.add('fly-star--hidden');
+        } else {
+          el.classList.remove('fly-star--hidden');
+        }
+      });
+
+      document.querySelectorAll('.flyingStartsYear').forEach(el => {
+        el.style.display = yearCheckbox.checked ? '' : 'none';
+      });
+
+      document.querySelectorAll('.flyingStartsMonth').forEach(el => {
+        el.style.display = monthCheckbox.checked ? '' : 'none';
+      });
+
+      document.querySelector('.compass-back__item--center').style.display = centerCheckbox.checked ? '' : 'none';
+    }
+
+    document.getElementById('FStarsN').addEventListener('change', updateFlyingStarsVisibility);
+    document.getElementById('FStarsY').addEventListener('change', updateFlyingStarsVisibility);
+    document.getElementById('FStarsM').addEventListener('change', updateFlyingStarsVisibility);
+    document.getElementById('FStarsC').addEventListener('change', updateFlyingStarsVisibility);
+
+    updateFlyingStarsVisibility();
+  });
+
+</script>

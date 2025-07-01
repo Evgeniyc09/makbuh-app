@@ -1,0 +1,170 @@
+.page__compas {
+  padding: 0;
+}
+
+#map {
+  width: 100%;
+  height: 80vh;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+#compass-group {
+  img {
+    width: 360px;
+  }
+}
+
+#compass-wrap,
+.compass-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  height: 360px;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+.compass-back {
+  z-index: 9;
+}
+
+#compass-svg {
+  pointer-events: none;
+}
+
+#cursor-head {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.compass-back__items {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  transform-origin: center center;
+}
+
+.compass-back__item {
+  .fly-star {
+    position: relative;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #908070;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 12px;
+    flex-wrap: wrap;
+    text-align: center;
+
+    &--hidden {
+      background-color: transparent;
+      border-color: transparent;
+      span {
+        display: none;
+      }
+    }
+  }
+
+  .flyingStartsYear {
+    position: absolute;
+    right: -18px;
+    top: -2px;
+    background-color: white;
+    border: 1px solid #908070;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    font-size: 12px;
+  }
+
+  .flyingStartsMonth {
+    position: absolute;
+    right: -18px;
+    top: 20px;
+    background-color: white;
+    border: 1px solid #908070;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    font-size: 12px;
+  }
+
+  span {
+    display: block;
+    width: 50%;
+  }
+}
+
+.compass-back__item--1 {
+  position: absolute;
+  top: 69px;
+  right: 166px;
+}
+
+.compass-back__item--2 {
+  position: absolute;
+  right: 104px;
+  top: 102px;
+}
+
+.compass-back__item--3 {
+  position: absolute;
+  right: 83px;
+  top: 162px;
+}
+
+.compass-back__item--4 {
+  position: absolute;
+  right: 105px;
+  top: 219px;
+}
+
+.compass-back__item--5 {
+  position: absolute;
+  right: 167px;
+  top: 250px;
+}
+
+.compass-back__item--6 {
+  position: absolute;
+  right: 231px;
+  top: 220px;
+}
+
+.compass-back__item--7 {
+  position: absolute;
+  right: 252px;
+  top: 157px;
+}
+
+.compass-back__item--8 {
+  position: absolute;
+  right: 231px;
+  top: 101px;
+}
+
+.compass-back__item--center {
+  position: absolute;
+  right: 167px;
+  top: 161px;
+}
+.checkbox-wrapper {
+  margin: 0 0 12px;
+}
+
+#ui {
+  margin: 0 0 12px;
+}
+
+#compass-angle {
+  border: 1px solid #adadad;
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  outline: none;
+}
