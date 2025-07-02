@@ -17,6 +17,7 @@
 
 
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="../css/app.min.css" />
 </head>
 
@@ -54,7 +55,6 @@
       </g>
       <!-- Красный курсор (стрелка) -->
       <g id="cursor-group">
-        <!-- Вертикальная линия вверх от центра (на половину компаса) -->
         <line x1="180" y1="180" x2="180" y2="0" stroke="red" stroke-width="3" stroke-linecap="round" />
         <!-- Горизонтальная перекладина в центре -->
         <line x1="140" y1="180" x2="220" y2="180" stroke="red" stroke-width="3" stroke-linecap="round" />
@@ -174,8 +174,21 @@
     <div class="modal__content" data-city-search="from" data-hidden-input="#hidden-from">
       <button class="modal__close" data-modal-close></button>
       <h2 class="modal__title">Параметры</h2>
-      <div id="ui">
-        Повернуть компас: <input id="compass-angle" type="number" value="0" step="1" min="0" max="359"> °
+      <div id="ui" class="compass-field-wrapper">
+        <label for="compass-angle">Повернуть компас:</label> <input id="compass-angle" class="compass-field"
+          type="number" value="0" step="1" min="0" max="359"> °
+      </div>
+      <div class="compass-field-wrapper">
+        <label for="CSYear">Текущий год:</label> <input id="CSYear" class="compass-field" type="number" step="1"
+          value="2023">
+      </div>
+      <div class="compass-field-wrapper">
+        <label for="rangePicker">Текущий месяц:</label> <input type="text" id="rangePicker" class="compass-field"
+          placeholder="Дата" readonly>
+      </div>
+      <div class="compass-field-wrapper">
+        <label for="builtYear">Год постройки:</label> <input id="builtYear" class="compass-field" type="number" step="1"
+          value="2023">
       </div>
       <div id="DegreeCorret" class="FormBlock">
 
@@ -293,6 +306,8 @@
   </a>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
 <script src="../js/app.min.js"></script>
 </body>
 
@@ -322,6 +337,8 @@
             { sector: "center", values: [2, 9, 2], year: 9, month: 2 }
           ]
         };
+
+        console.log('asdas')
         fillCompassItems(data.stars);
       }, 500);
     }
@@ -330,8 +347,6 @@
       clearTimeout(debounceTimeout);
       debounceTimeout = setTimeout(() => {
         fetchCompassData(coords, cursorAngle);
-
-        console.log('запрос ушел')
       }, 400);
     }
 
@@ -427,9 +442,6 @@
       const compassAngle = Number(compassAngleInput.value) || 0;
       let displayAngle = (cursorAngle - compassAngle + 360) % 360;
       document.getElementById('cursor-angle-label').textContent = `${Math.round(displayAngle)}°`;
-      if (lastCoords) {
-        debounceFetchCompassData(lastCoords, cursorAngle);
-      }
     }
     setCursorAngle(cursorAngle);
 
@@ -519,4 +531,11 @@
     updateFlyingStarsVisibility();
   });
 
+</script>
+
+<script>
+  flatpickr("#rangePicker", {
+    locale: "ru",
+    dateFormat: "d.m"
+  });
 </script>

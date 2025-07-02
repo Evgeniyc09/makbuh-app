@@ -160,11 +160,19 @@
 #ui {
   margin: 0 0 12px;
 }
-
-#compass-angle {
+.compass-field {
   border: 1px solid #adadad;
   padding: 5px 10px;
   border-radius: 4px;
 
   outline: none;
+}
+
+.compass-field-wrapper {
+  margin: 0 0 12px;
+
+  label {
+    min-width: 150px;
+    display: inline-block;
+  }
 }
