@@ -320,14 +320,12 @@
     const replacementStarsUrl = './starsMockData.json';
     let map;
     let cursorAngle = 0;
-    let lastCoords = null;
-    let debounceTimeout = null;
+    let starsData = null;
 
-    function fetchCompassData(coords, cursorAngle) {
+    function fetchCompassDataOnce(coords, cursorAngle) {
       const period = 9;
       const year = 2025;
       const month = 2;
-      const cursorSector = getSectorFromAngle(cursorAngle);
 
       fetch(`${replacementStarsUrl}?period=${period}&year=${year}&month=${month}`)
         .then(response => {
@@ -335,16 +333,14 @@
           return response.json();
         })
         .then(data => {
-          console.log(data.stars)
-          console.log(cursorSector)
-          const stars = transformStarsToCompassArray(data.stars, data.year_stars, data.month_stars, cursorSector);
-          fillCompassItems(stars);
-
+          starsData = data;
+          setCursorAngle(cursorAngle);
         })
         .catch(err => {
           console.error('Ошибка получения данных:', err);
         });
     }
+
     function getSectorFromAngle(angle) {
       const sectors = [
         's1', 's2', 's3',
@@ -357,49 +353,30 @@
         'se1', 'se2', 'se3'
       ];
 
-      // Всего 24 сектора по 15 градусов (360 / 24)
       const index = Math.floor((angle % 360) / 15);
       return sectors[index] || 's1';
     }
-    function transformStarsToCompassArray(starsRaw, years, months, cursorSector = 's1') {
+
+    function transformStarsToCompassArray(starsRaw, years, months, sectorKey) {
       const directionOrder = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw', 'center'];
-      const cursorData = starsRaw[cursorSector];
-
-      if (!cursorData) {
-        console.warn(`Сектор ${cursorSector} не найден в данных`);
-        return [];
-      }
-
-      return directionOrder.map((dir, i) => {
-        const values = cursorData[dir];
-        const year = years[dir];
-        const month = months[dir];
-
-        return {
-          sector: dir,
-          values: values || [],
-          year: year,
-          month: month
-        };
-      });
-    }
-
-    function debounceFetchCompassData(coords, cursorAngle) {
-      clearTimeout(debounceTimeout);
-      debounceTimeout = setTimeout(() => {
-        fetchCompassData(coords, cursorAngle);
-      }, 400);
+      const cursorData = starsRaw[sectorKey];
+      if (!cursorData) return [];
+      return directionOrder.map(dir => ({
+        sector: dir,
+        values: cursorData[dir] || [],
+        year: years[dir],
+        month: months[dir]
+      }));
     }
 
     function fillCompassItems(stars) {
       stars.forEach(star => {
-        const item = document.getElementById(`${star.sector}`);;
+        const item = document.getElementById(`${star.sector}`);
         if (!item) return;
         const flyStar = item.querySelector('.fly-star');
         if (!flyStar) return;
 
         flyStar.innerHTML = '';
-
         star.values.forEach(val => {
           const span = document.createElement('span');
           span.textContent = val;
@@ -418,26 +395,12 @@
       });
     }
 
-    function updateCoordsText(coords) {
-      console.log(`Широта: ${coords[0].toFixed(6)}, Долгота: ${coords[1].toFixed(6)}`);
-    }
-
-    function onCoordsChange(coords) {
-      lastCoords = coords;
-      debounceFetchCompassData(coords, cursorAngle);
-      updateCoordsText(coords);
-    }
-
     ymaps.ready(function () {
       function setupMap(coords, balloonContent) {
         map = new ymaps.Map("map", { center: coords, zoom: 10 });
         map.geoObjects.add(new ymaps.Placemark(coords, { balloonContent }));
-
-        onCoordsChange(coords);
-
+        fetchCompassDataOnce(coords, cursorAngle);
         map.events.add('boundschange', function () {
-          const center = map.getCenter();
-          onCoordsChange(center);
         });
       }
 
@@ -459,7 +422,6 @@
     });
 
     const compassItems = document.querySelector('.compass-back__items');
-
     const compassGroup = document.getElementById('compass-group');
     const compassAngleInput = document.getElementById('compass-angle');
     compassAngleInput.addEventListener('input', () => {
@@ -480,8 +442,15 @@
       const compassAngle = Number(compassAngleInput.value) || 0;
       let displayAngle = (cursorAngle - compassAngle + 360) % 360;
       document.getElementById('cursor-angle-label').textContent = `${Math.round(displayAngle)}°`;
-      if (lastCoords) {
-        debounceFetchCompassData(lastCoords, cursorAngle);
+      if (starsData) {
+        fillCompassItems(
+          transformStarsToCompassArray(
+            starsData.stars,
+            starsData.year_stars,
+            starsData.month_stars,
+            getSectorFromAngle(cursorAngle)
+          )
+        );
       }
     }
     setCursorAngle(cursorAngle);
