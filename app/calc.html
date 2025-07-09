@@ -1,6 +1,6 @@
 <!--#set var="title" value="OptimizedHTML 5" -->
 <!--#include virtual="./parts/header.html" -->
-<div class="page page__bg page__compas">
+<div class="page page__bg">
   <!--#include virtual="./parts/head.html" -->
   <div class="calc__form">
     <div class="compass-field-wrapper">
@@ -49,6 +49,12 @@
       </select>
 
 
+
+    </div>
+
+    <div class="compass-field-wrapper">
+      <label for="">Время рождения</label>
+
       <select name="" id="" class="compass-field">
         <option value="00">00</option>
         <option value="1">1</option>
@@ -70,10 +76,408 @@
       <input type="checkbox">
     </div>
 
+    <div class="city-form">
+      <input type="text" id="city-search" placeholder="Поиск города..." autocomplete="off">
+      <div id="city-dropdown" class="dropdown"></div>
 
-    <a href="">Рассчитать</a>
+      <select id="timezone-select">
+      </select>
+
+      <div class="cd-wrap">
+        <input type="text" id="city-lat" placeholder="Широта" readonly>
+        <input type="text" id="city-lon" placeholder="Долгота" readonly>
+      </div>
+    </div>
+
+
+    <a href="" class="calc-btn">Рассчитать</a>
   </div>
-  <!--#include virtual="./parts/nav.html" -->
+
+  <div class="t1">
+    <div class="t1__col-group">
+      <div class="t1__col">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-beige">
+            <span class="n-top-l">1</span>
+            <span class="n-top-r">2</span>
+            <span class="n-bot-l">3</span>
+            <span class="n-bot-r">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p>Ян Огонь</p>
+            <p>Ян Огонь</p>
+            <p>Ян Огонь</p>
+          </div>
+        </div>
+      </div>
+      <div class="t1__col t1__col--blue">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-red">
+            <span class="n-top-l color-beige">1</span>
+            <span class="n-top-r color-beige">2</span>
+            <span class="n-bot-l color-beige">3</span>
+            <span class="n-bot-r color-beige">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p><span>己</span> <span>己</span> <span>己</span></p>
+            <p><span>ГБ</span> <span>ГБ</span> <span>ГБ</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="t1__col">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-red">
+            <span class="n-top-l color-beige">1</span>
+            <span class="n-top-r color-beige">2</span>
+            <span class="n-bot-l color-beige">3</span>
+            <span class="n-bot-r color-beige">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p><span>己</span> <span>己</span> <span>己</span></p>
+            <p><span>ГБ</span> <span>ГБ</span> <span>ГБ</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="t1__col">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-red">
+            <span class="n-top-l color-beige">1</span>
+            <span class="n-top-r color-beige">2</span>
+            <span class="n-bot-l color-beige">3</span>
+            <span class="n-bot-r color-beige">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p><span>己</span> <span>己</span> <span>己</span></p>
+            <p><span>ГБ</span> <span>ГБ</span> <span>ГБ</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="t1__col-group">
+      <div class="t1__col">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-red">
+            <span class="n-top-l color-beige">1</span>
+            <span class="n-top-r color-beige">2</span>
+            <span class="n-bot-l color-beige">3</span>
+            <span class="n-bot-r color-beige">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p><span>己</span> <span>己</span> <span>己</span></p>
+            <p><span>ГБ</span> <span>ГБ</span> <span>ГБ</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="t1__col">
+        <div class="t1__arrows">
+          <a href="">◄</a>
+          <a href="">►</a>
+        </div>
+        <div class="t1__head">Час</div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Пра­виль­ная власть</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">Ян Огонь</div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell t1__cell--large color-red">
+            <span class="n-top-l color-beige">1</span>
+            <span class="n-top-r color-beige">2</span>
+            <span class="n-bot-l color-beige">3</span>
+            <span class="n-bot-r color-beige">4</span>
+            丙
+          </div>
+        </div>
+
+        <div class="t1__row">
+          <div class="t1__cell color-beige">
+            <p><span>己</span> <span>己</span> <span>己</span></p>
+            <p><span>ГБ</span> <span>ГБ</span> <span>ГБ</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s1">
+    <div class="s1-sym s1-sym-1 fs-24">己</div>
+    <div class="s1-sym s1-sym-2 fs-24">己</div>
+    <div class="s1-sym s1-sym-3 fs-24">己</div>
+    <div class="s1-sym s1-sym-4 fs-24">己</div>
+    <div class="s1-sym s1-sym-5 fs-24">己</div>
+    <div class="s1-sym s1-sym-6 fs-24 color-wood">己</div>
+    <div class="s1-sym s1-sym-7 fs-24">己</div>
+    <div class="s1-sym s1-sym-8 fs-24">己</div>
+    <div class="s1-sym s1-sym-9 fs-24 color-metall">己</div>
+    <div class="s1-sym s1-sym-10 fs-24">己</div>
+    <div class="s1-sym s1-sym-11 fs-24 color-water">己</div>
+    <img src="../images/dist/s1.png" alt="">
+  </div>
+
+  <div class="t2">
+    <div class="t2__col">
+      <div class="t2__head">
+        <span>Гуа </span> <span>4</span>
+      </div>
+      <div class="t2__row">
+        <span>Шэн Ци </span> <span>С</span>
+      </div>
+    </div>
+
+    <div class="t2__col">
+      <div class="t2__head">
+        <span>Гуа </span> <span>4</span>
+      </div>
+      <div class="t2__row">
+        <span>Шэн Ци </span> <span>С</span>
+      </div>
+    </div>
+
+    <div class="t2__col">
+      <div class="t2__head">
+        <span>Личный Разрушитель</span>
+      </div>
+      <div class="t2__row">
+        <span>Дня: </span> <span>丑</span> <span>Года:</span> <span>酉</span>
+      </div>
+    </div>
+
+    <div class="t2__col">
+      <div class="t2__head">
+        <span>Путешествующая лошадь </span>
+      </div>
+      <div class="t2__row">
+        <span>Дня:
+        </span> <span>巳</span>
+
+        <span>Года:</span>
+
+        <span>巳</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-title color-earth fs-24">Годы жизни</div>
+
+  <div class="t3">
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row t3__row--disabled">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row t3__row--hover">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+    <div class="t3__col">
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+      <div class="t3__row">
+        2082 <span class="color-wood">壬</span><span class="color-water">寅</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--#include virtual="./parts/nav.html" -->
 </div>
 <!--#include virtual="./parts/footer.html" -->
 <script src="https://api-maps.yandex.ru/2.1/?apikey=21e9bb68-c626-48cd-9ec6-caba33922726&lang=ru_RU"
@@ -85,3 +489,64 @@
     dateFormat: "d.m"
   });
 </script> -->
+
+<script>
+  const cities = [
+    { name: "Алматы", timezone: "UTC+6", lat: "43.238949", lon: "76.889709" },
+    { name: "Москва", timezone: "UTC+3", lat: "55.755825", lon: "37.617298" },
+    { name: "Астана", timezone: "UTC+6", lat: "51.169392", lon: "71.449074" },
+    { name: "Лондон", timezone: "UTC+0", lat: "51.507351", lon: "-0.127758" },
+  ];
+
+  const uniqueTimezones = Array.from(new Set(cities.map(c => c.timezone)));
+
+  const timezoneSelect = document.getElementById('timezone-select');
+  uniqueTimezones.forEach(tz => {
+    const opt = document.createElement('option');
+    opt.value = tz;
+    opt.textContent = tz;
+    timezoneSelect.appendChild(opt);
+  });
+
+  const input = document.getElementById('city-search');
+  const dropdown = document.getElementById('city-dropdown');
+  const latInput = document.getElementById('city-lat');
+  const lonInput = document.getElementById('city-lon');
+
+  input.addEventListener('input', function () {
+    const value = this.value.trim().toLowerCase();
+    dropdown.innerHTML = '';
+
+    if (!value) return;
+
+    const filtered = cities.filter(city => city.name.toLowerCase().includes(value));
+    if (!filtered.length) {
+      dropdown.innerHTML = '<div class="dropdown-item">Город не найден</div>';
+      return;
+    }
+
+    filtered.forEach(city => {
+      const item = document.createElement('div');
+      item.className = 'dropdown-item';
+      item.textContent = city.name;
+      item.onclick = () => selectCity(city);
+      dropdown.appendChild(item);
+    });
+    dropdown.style.display = 'block';
+  });
+
+  function selectCity(city) {
+    input.value = city.name;
+    latInput.value = city.lat;
+    lonInput.value = city.lon;
+    timezoneSelect.value = city.timezone;
+    dropdown.innerHTML = '';
+    dropdown.style.display = 'none';
+  }
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.city-form')) {
+      dropdown.style.display = 'none';
+    }
+  });
+</script>
