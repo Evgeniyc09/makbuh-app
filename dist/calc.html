@@ -217,7 +217,7 @@
         </div>
 
         <div class="t1__row">
-          <div class="t1__cell t1__cell--large color-red">
+          <div class="t1__cell t1__cell--large color-red bg-earth-op">
             <span class="n-top-l color-beige">1</span>
             <span class="n-top-r color-beige">2</span>
             <span class="n-bot-l color-beige">3</span>
@@ -625,21 +625,39 @@
 
 <script>
   const cities = [
-    { name: "Алматы", timezone: "UTC+6", lat: "43.238949", lon: "76.889709" },
-    { name: "Москва", timezone: "UTC+3", lat: "55.755825", lon: "37.617298" },
-    { name: "Астана", timezone: "UTC+6", lat: "51.169392", lon: "71.449074" },
-    { name: "Лондон", timezone: "UTC+0", lat: "51.507351", lon: "-0.127758" },
+    { name: "Алматы", timezone: "Asia/Almaty", lat: "43.238949", lon: "76.889709" },
+    { name: "Москва", timezone: "Europe/Moscow", lat: "55.755825", lon: "37.617298" },
+    { name: "Астана", timezone: "Asia/Almaty", lat: "51.169392", lon: "71.449074" },
+    { name: "Лондон", timezone: "Europe/London", lat: "51.507351", lon: "-0.127758" },
   ];
 
-  const uniqueTimezones = Array.from(new Set(cities.map(c => c.timezone)));
+  function getUTCOffsetString(timezone) {
+    const date = new Date();
+    const dateUtc = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+    const dateTz = new Date(date.toLocaleString('en-US', { timeZone: timezone }));
+    const diffMin = (dateTz.getTime() - dateUtc.getTime()) / 60000;
+    const sign = diffMin >= 0 ? '+' : '-';
+    const hours = String(Math.floor(Math.abs(diffMin) / 60)).padStart(2, '0');
+    const minutes = String(Math.abs(diffMin) % 60).padStart(2, '0');
+    return `UTC${sign}${hours}:${minutes}`;
+  }
+
+  const allTimezones = [...new Set(cities.map(c => c.timezone))];
+  const uniqueUTCs = Array.from(new Set(allTimezones.map(tz => getUTCOffsetString(tz))));
 
   const timezoneSelect = document.getElementById('timezone-select');
-  uniqueTimezones.forEach(tz => {
-    const opt = document.createElement('option');
-    opt.value = tz;
-    opt.textContent = tz;
-    timezoneSelect.appendChild(opt);
-  });
+  function fillTimezoneSelect(selectedUTC = '') {
+    timezoneSelect.innerHTML = '';
+    uniqueUTCs.forEach(utc => {
+      const opt = document.createElement('option');
+      opt.value = utc;
+      opt.textContent = utc;
+      if (utc === selectedUTC) opt.selected = true;
+      timezoneSelect.appendChild(opt);
+    });
+  }
+
+  fillTimezoneSelect();
 
   const input = document.getElementById('city-search');
   const dropdown = document.getElementById('city-dropdown');
@@ -661,7 +679,7 @@
     filtered.forEach(city => {
       const item = document.createElement('div');
       item.className = 'dropdown-item';
-      item.textContent = city.name;
+      item.textContent = `${city.name} (${city.timezone})`;
       item.onclick = () => selectCity(city);
       dropdown.appendChild(item);
     });
@@ -672,7 +690,8 @@
     input.value = city.name;
     latInput.value = city.lat;
     lonInput.value = city.lon;
-    timezoneSelect.value = city.timezone;
+    const utcOffset = getUTCOffsetString(city.timezone);
+    fillTimezoneSelect(utcOffset);
     dropdown.innerHTML = '';
     dropdown.style.display = 'none';
   }
