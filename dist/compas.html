@@ -51,18 +51,19 @@
   <div class="plan-front" style="display: none;">
     <img src="../images/dist/plan-front.svg" alt="">
   </div>
+  <div class="plan-grid" style="display: none;">
+    <div class="plan-grid-item">СЗ</div>
+    <div class="plan-grid-item">С</div>
+    <div class="plan-grid-item">СВ</div>
+    <div class="plan-grid-item">З</div>
+    <div class="plan-grid-item"></div>
+    <div class="plan-grid-item">В</div>
+    <div class="plan-grid-item">ЮЗ</div>
+    <div class="plan-grid-item">Ю</div>
+    <div class="plan-grid-item">ЮВ</div>
+  </div>
   <div class="rotatable" id="rotatable">
-    <div class="plan-grid" style="display: none;">
-      <div class="plan-grid-item">З</div>
-      <div class="plan-grid-item">СЗ</div>
-      <div class="plan-grid-item">С</div>
-      <div class="plan-grid-item">ЮЗ</div>
-      <div class="plan-grid-item"></div>
-      <div class="plan-grid-item">СВ</div>
-      <div class="plan-grid-item">Ю</div>
-      <div class="plan-grid-item">ЮВ</div>
-      <div class="plan-grid-item">В</div>
-    </div>
+
     <div class="rotatable-img">
       <!-- <img src="../images/dist/plan-example.png" alt=""> -->
     </div>
@@ -71,7 +72,6 @@
     <svg id="compass-svg" width="360" height="360" viewBox="0 0 360 360">
       <!-- Картинка компаса -->
       <g id="compass-group">
-        a
         <image href="../images/dist/compas.png" x="0" y="0" width="360" height="360" />
       </g>
       <!-- Красный курсор (стрелка) -->
@@ -649,6 +649,7 @@
       const angle = Number(compassAngleInput.value) || 0;
       compassGroup.setAttribute('transform', `rotate(${angle},180,180)`);
       compassItems.style.transform = `rotate(${angle}deg)`;
+      document.querySelector('.plan-grid').style.transform = `rotate(${angle}deg)`;
       setCursorAngle(cursorAngle);
       updateCabins(angle);
     });
@@ -975,6 +976,7 @@
               const rotateTo = 180 - cursorAngle;
               if (compassGroupPlan) compassGroupPlan.setAttribute('transform', `rotate(${rotateTo},180,180)`);
               if (compassItemsPlan) compassItemsPlan.style.transform = `rotate(${rotateTo}deg)`;
+              if (document.querySelector('.plan-grid')) document.querySelector('.plan-grid').style.transform = `rotate(${rotateTo}deg)`;
               updateCabins(rotateTo)
             } else {
               if (cursorGroup) cursorGroup.style.display = 'block';
@@ -985,6 +987,7 @@
 
               if (compassGroupPlan) compassGroupPlan.setAttribute('transform', `rotate(0,180,180)`);
               if (compassItemsPlan) compassItemsPlan.style.transform = `rotate(0deg)`;
+              if (document.querySelector('.plan-grid')) document.querySelector('.plan-grid').style.transform = `rotate(0deg)`;
 
               updateCabins(0)
             }
