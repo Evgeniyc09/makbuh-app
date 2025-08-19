@@ -3,20 +3,45 @@
 <div class="page page__bg">
   <!--#include virtual="./parts/head.html" -->
 
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="hero">
+          <div class="hero__content">
+            <h2 class="hero__title">Феншуй</h2>
+            <p class="hero__description">персональный разбор
+              вашейличности</p>
 
-  <div class="hero">
-    <div class="hero__content">
-      <h2 class="hero__title">Феншуй</h2>
-      <p class="hero__description">персональный разбор
-        вашейличности</p>
+            <a href="" class="hero__btn">Узнать подробнее</a>
+          </div>
 
-      <a href="" class="hero__btn">Узнать подробнее</a>
+          <div class="hero__image">
+            <img src="../images/dist/hero.png">
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="hero">
+          <div class="hero__content">
+            <h2 class="hero__title">Феншуй</h2>
+            <p class="hero__description">персональный разбор
+              вашейличности</p>
+
+            <a href="" class="hero__btn">Узнать подробнее</a>
+          </div>
+
+          <div class="hero__image">
+            <img src="../images/dist/hero.png">
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="hero__image">
-      <img src="../images/dist/hero.png">
-    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </div>
+
+
 
   <div class="main__quote main__quote--noquote">
     Открой аффирмацию дня
@@ -112,3 +137,13 @@
 </div>
 
 <!--#include virtual="./parts/footer.html" -->
+
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    spaceBetween: 30,
+  });
+</script>

@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 0 25px;
+  padding: 0 30px;
 
   &__title {
     color: #017cc6;
@@ -23,7 +24,7 @@
 
   &__image {
     img {
-      width: 225px;
+      width: 176px;
     }
   }
 
@@ -831,4 +832,26 @@
   cursor: pointer;
   width: 100%;
   border-radius: 10px;
+}
+
+.swiper-button-next {
+  right: 0;
+  background: url("../images/dist/chevron-right.svg");
+}
+
+.swiper-button-prev {
+  left: -10px;
+  background: url("../images/dist/chevron-left.svg");
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  &:after {
+    content: "";
+    display: none;
+  }
+}
+
+.mySwiper {
+  margin: 0 0 20px;
 }
