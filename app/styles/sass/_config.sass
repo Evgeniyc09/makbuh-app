@@ -1,8 +1,7 @@
 // USER VARIABLES SECTION
 
-$cyan: #5EC1C7 // Accent Color
 $fontsize: 16px // Body Font Size
-$userfont: "Noto Sans", sans-serif // User Font Family
+$userfont: "Montserrat", sans-serif // User Font Family
 $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
 
 // Bootstrap compatible gutter variable => $gutter
@@ -26,13 +25,14 @@ $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font
 		src: url($fwoff2) format('woff2')
 		src: url($fwoff) format('woff')
 		
-@include font('Bebas', '../fonts/bebasneuecyrillic.woff2', '../fonts/bebasneuecyrillic.woff', '../fonts/bebasneuecyrillic.ttf',)
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@include font('Cambria', '../fonts/Cambria.woff2', '../fonts/Cambria.woff', '../fonts/Cambria.ttf',)
+@include font('CambriaBold', '../fonts/CambriaBold.woff2', '../fonts/CambriaBold.woff', '../fonts/CambriaBold.ttf',)
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 // GENERAL CSS SETTINGS
 body
 	font-family: $userfont
 	font-size: $fontsize
-	color: #313131
+	color: #2F2F2F
 	min-width: 320px
 	position: relative
 	overflow-x: hidden
@@ -49,4 +49,4 @@ body
 	box-sizing: border-box
 
 h1, h2, h3, h4, h5, h6
-	font-family: 'Noto Sans', sans-serif
+	font-family: 'Cambria', sans-serif
