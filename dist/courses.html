@@ -65,16 +65,57 @@
             <img class="disabled" src="./images/dist/star.svg" alt="">
           </div>
 
-          <div class="v-course__description">
+          <div class="v-course__description js-desc">
             Научитесь видеть не только стены
             и квадратные метры,
             но и энергию пространства.
+            asds
+            adsadasdas ad ada sasas adas
+            adsadasdasd
+            addsfdsf sdf disabledfds
+            fdf
+            ds
           </div>
+          <button class="read-more js-read-more">Читать полностью</button>
         </div>
-        <div class="v-course__btn-wrapper">
-          <p class="v-course__price">15 000 ₸</p>
-          <a class="v-course__btn" href="">Купить</a>
+      </div>
+      <div class="v-course__btn-wrapper">
+        <p class="v-course__price">15 000 ₸</p>
+        <a class="v-course__btn" href="">Купить</a>
+      </div>
+    </div>
+    <div class="v-course__item">
+      <div class="v-course__cover">
+        <img src="./images/dist/no-photo-course.png" alt="">
+      </div>
+      <p class="v-course__name">
+        Недвижимость мечто по феншуй
+      </p>
+      <div class="v-course__content">
+        <div class="v-course__col">
+          <div class="v-course__difficulty">
+            <img src="./images/dist/star.svg" alt="">
+            <img src="./images/dist/star.svg" alt="">
+            <img class="disabled" src="./images/dist/star.svg" alt="">
+          </div>
+
+          <div class="v-course__description js-desc">
+            Научитесь видеть не только стены
+            и квадратные метры,
+            но и энергию пространства.
+            asds
+            adsadasdas ad ada sasas adas
+            adsadasdasd
+            addsfdsf sdf disabledfds
+            fdf
+            ds
+          </div>
+          <button class="read-more js-read-more">Читать полностью</button>
         </div>
+      </div>
+      <div class="v-course__btn-wrapper">
+        <p class="v-course__price">15 000 ₸</p>
+        <a class="v-course__btn" href="">Купить</a>
       </div>
     </div>
   </div>
@@ -196,3 +237,17 @@
 </body>
 
 </html>
+
+<script>
+  document.querySelectorAll('.v-course__item').forEach(card => {
+    const text = card.querySelector('.js-desc');
+    const btn = card.querySelector('.js-read-more');
+
+    btn.addEventListener('click', () => {
+      text.classList.toggle('expanded');
+      btn.textContent = text.classList.contains('expanded')
+        ? 'Свернуть'
+        : 'Читать полностью';
+    });
+  });
+</script>
