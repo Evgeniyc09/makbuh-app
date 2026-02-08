@@ -2,8 +2,8 @@
 <!--#include virtual="./parts/header.html" -->
 <div class="page page__bg">
   <!--#include virtual="./parts/head.html" -->
-
-
+  <!--#include virtual="./parts/stories.html" -->
+  <!--#include virtual="./parts/sheet.html" -->
 
   <div class="main-bg">
     <img class="main-bg__img" src="./images/dist/main-bg.png" alt="">
@@ -207,5 +207,14 @@
       el: '.swiper-pagination-service',
       clickable: true,
     },
+  });
+</script>
+
+<script>
+  const thumbsSwiper = new Swiper('.story-thumbs', {
+    slidesPerView: 'auto',
+    spaceBetween: 8,
+    freeMode: true,
+    resistanceRatio: 0.6,
   });
 </script>

@@ -1,0 +1,33 @@
+<div class="sheet" id="sheet">
+    <div class="sheet__overlay" id="sheetOverlay"></div>
+    <div class="sheet__content">
+        <button class="sheet__close" id="sheetClose">✕</button>
+        <img src="https://picsum.photos/id/10/600/800" alt="Banner" class="sheet__image">
+        <button class="sheet__btn" id="sheetActionBtn">Кликнуть</button>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const sheet = document.getElementById('sheet');
+        const body = document.querySelector('body');
+        const closeBtn = document.getElementById('sheetClose');
+        const overlay = document.getElementById('sheetOverlay');
+
+        requestAnimationFrame(() => {
+            sheet.classList.add('open');
+            body.classList.add('sheetBody');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sheet.classList.remove('open');
+            body.classList.remove('sheetBody');
+        });
+
+        overlay.addEventListener('click', () => {
+            sheet.classList.remove('open');
+            body.classList.remove('sheetBody');
+        });
+    });
+
+</script>

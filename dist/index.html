@@ -40,8 +40,272 @@
         </div>
     </a>
 </header>
+  <div class="swiper story-thumbs">
+    <div class="swiper-wrapper">
 
+        <div class="swiper-slide">
+            <div class="thumb" data-index="0">
+                <img src="https://picsum.photos/id/1015/100/100">
+            </div>
+        </div>
 
+        <div class="swiper-slide">
+            <div class="thumb" data-index="1">
+                <img src="https://picsum.photos/id/1016/100/100">
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="thumb" data-index="2">
+                <img src="https://picsum.photos/id/1011/100/100">
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="thumb" data-index="3">
+                <img src="https://picsum.photos/id/6/100/100">
+            </div>
+        </div>
+
+        <div class="swiper-slide">
+            <div class="thumb" data-index="4">
+                <img src="https://picsum.photos/id/10/100/100">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="stories-overlay" id="storiesOverlay">
+    <div class="stories">
+
+        <div class="story">
+            <img src="https://picsum.photos/id/1015/600/1000">
+            <a href="" class="story-btn">Подробнее</a>
+        </div>
+
+        <div class="story">
+            <video src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" muted playsinline
+                preload="metadata"></video>
+            <a href="" class="story-btn">Перейти</a>
+        </div>
+
+        <div class="story">
+            <img src="https://picsum.photos/id/1011/600/1000">
+            <a href="" class="story-btn">Купить</a>
+        </div>
+
+        <div class="story">
+            <img src="https://picsum.photos/id/8/600/1000">
+            <a href="" class="story-btn">Купить</a>
+        </div>
+
+        <div class="story">
+            <img src="https://picsum.photos/id/10/600/1000">
+            <a href="" class="story-btn">Купить</a>
+        </div>
+
+        <div class="story-progress">
+            <span>
+                <div class="bar"></div>
+            </span>
+            <span>
+                <div class="bar"></div>
+            </span>
+            <span>
+                <div class="bar"></div>
+            </span>
+            <span>
+                <div class="bar"></div>
+            </span>
+            <span>
+                <div class="bar"></div>
+            </span>
+        </div>
+
+        <button class="stories-close">✕</button>
+
+        <div class="tap left"></div>
+        <div class="tap right"></div>
+    </div>
+</div>
+
+<script>
+    const overlay = document.getElementById('storiesOverlay')
+    const stories = document.querySelectorAll('.story')
+    const bars = document.querySelectorAll('.story-progress span')
+    const thumbs = document.querySelectorAll('.thumb')
+    const closeBtn = document.querySelector('.stories-close')
+    const nextZone = document.querySelector('.tap.right')
+    const prevZone = document.querySelector('.tap.left')
+
+    const IMAGE_DURATION = 5000
+
+    let index = 0
+    let rafId = null
+    let startTime = 0
+    let duration = 0
+    let pausedAt = 0
+    let isPaused = false
+
+    function openStories(i = 0) {
+        index = i
+        overlay.classList.add('active')
+        showStory(index)
+    }
+    function closeStories() {
+        overlay.classList.remove('active')
+        cancelAnimationFrame(rafId)
+        pauseVideo()
+    }
+
+    function showStory(i) {
+        cancelAnimationFrame(rafId)
+        isPaused = false
+
+        stories.forEach(s => {
+            s.classList.remove('active')
+            const v = s.querySelector('video')
+            if (v) {
+                v.pause()
+                v.currentTime = 0
+            }
+        })
+
+        index = i
+        const story = stories[i]
+        story.classList.add('active')
+
+        let ms = IMAGE_DURATION
+        const video = story.querySelector('video')
+
+        if (video) {
+            video.play()
+            ms = (video.duration || 5) * 1000
+            video.onended = nextStory
+        }
+
+        startProgress(ms)
+    }
+
+    function startProgress(ms) {
+        duration = ms
+        startTime = performance.now()
+        pausedAt = 0
+
+        bars.forEach((b, i) => {
+            b.querySelector('.bar').style.width =
+                i < index ? '100%' : '0%'
+        })
+
+        animate()
+    }
+
+    function animate(now = performance.now()) {
+        if (isPaused) return
+
+        const elapsed = now - startTime
+        const progress = Math.min(elapsed / duration, 1)
+
+        bars[index].querySelector('.bar').style.width =
+            (progress * 100) + '%'
+
+        if (progress < 1) {
+            rafId = requestAnimationFrame(animate)
+        } else {
+            nextStory()
+        }
+    }
+
+    function pauseStory() {
+        if (isPaused) return
+        isPaused = true
+        pausedAt = performance.now()
+        cancelAnimationFrame(rafId)
+        pauseVideo()
+    }
+
+    function resumeStory() {
+        if (!isPaused) return
+        isPaused = false
+        startTime += performance.now() - pausedAt
+        playVideo()
+        animate()
+    }
+
+    function pauseVideo() {
+        const v = stories[index].querySelector('video')
+        if (v && !v.paused) v.pause()
+    }
+    function playVideo() {
+        const v = stories[index].querySelector('video')
+        if (v && v.paused) v.play()
+    }
+
+    function nextStory() {
+        if (index < stories.length - 1) {
+            showStory(index + 1)
+        } else {
+            closeStories()
+        }
+    }
+    function prevStory() {
+        if (index > 0) showStory(index - 1)
+    }
+
+    thumbs.forEach(t =>
+        t.onclick = () => openStories(+t.dataset.index)
+    )
+
+    closeBtn.onclick = e => {
+        e.stopPropagation()
+        closeStories()
+    }
+
+    nextZone.onclick = nextStory
+    prevZone.onclick = prevStory
+
+        ;[nextZone, prevZone].forEach(el => {
+            el.addEventListener('mousedown', pauseStory)
+            el.addEventListener('mouseup', resumeStory)
+            el.addEventListener('mouseleave', resumeStory)
+            el.addEventListener('touchstart', pauseStory)
+            el.addEventListener('touchend', resumeStory)
+        })
+</script>
+  <div class="sheet" id="sheet">
+    <div class="sheet__overlay" id="sheetOverlay"></div>
+    <div class="sheet__content">
+        <button class="sheet__close" id="sheetClose">✕</button>
+        <img src="https://picsum.photos/id/10/600/800" alt="Banner" class="sheet__image">
+        <button class="sheet__btn" id="sheetActionBtn">Кликнуть</button>
+    </div>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const sheet = document.getElementById('sheet');
+        const body = document.querySelector('body');
+        const closeBtn = document.getElementById('sheetClose');
+        const overlay = document.getElementById('sheetOverlay');
+
+        requestAnimationFrame(() => {
+            sheet.classList.add('open');
+            body.classList.add('sheetBody');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            sheet.classList.remove('open');
+            body.classList.remove('sheetBody');
+        });
+
+        overlay.addEventListener('click', () => {
+            sheet.classList.remove('open');
+            body.classList.remove('sheetBody');
+        });
+    });
+
+</script>
 
   <div class="main-bg">
     <img class="main-bg__img" src="./images/dist/main-bg.png" alt="">
@@ -322,5 +586,14 @@
       el: '.swiper-pagination-service',
       clickable: true,
     },
+  });
+</script>
+
+<script>
+  const thumbsSwiper = new Swiper('.story-thumbs', {
+    slidesPerView: 'auto',
+    spaceBetween: 8,
+    freeMode: true,
+    resistanceRatio: 0.6,
   });
 </script>

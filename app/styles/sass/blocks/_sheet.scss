@@ -1,0 +1,97 @@
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  font-family: sans-serif;
+}
+
+.sheet__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sheet__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 390px;
+  margin: 0 auto -4px;
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  box-sizing: border-box;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.35s ease;
+}
+
+.sheet__close {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 40;
+}
+
+.sheet__image {
+  width: 100%;
+}
+
+.sheet__btn {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  padding: 12px 30px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 30;
+}
+
+.sheet__btn:hover {
+  background-color: #0056b3;
+}
+
+.sheet.open {
+  pointer-events: auto;
+}
+
+.sheet.open .sheet__overlay {
+  opacity: 1;
+}
+
+.sheet.open .sheet__content {
+  transform: translateY(0);
+}
+
+.sheetBody {
+  overflow: hidden;
+}
