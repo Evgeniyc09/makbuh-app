@@ -1,0 +1,106 @@
+<!--#set var="title" value="OptimizedHTML 5" -->
+<!--#include virtual="./parts/header.html" -->
+<div class="page page__bg page__bg-circle">
+  <!--#include virtual="./parts/head.html" -->
+
+  <h3 class="page__title">Тарифы</h3>
+
+  <div class="v-tarif__list">
+    <div class="v-tarif__item v-tarif__item--yellow">
+      <p class="v-tarif__item-title">Тариф «Практикующий бухгалтер»</p>
+
+      <ul class="v-tarif__item-ul">
+        <li>Всё из тарифа «Базовый бухгалтер»</li>
+        <li>Разбор реальных кейсов по налогам и отчётности</li>
+        <li>Проверка домашних заданий</li>
+        <li>Обратная связь по вашим рабочим ситуациям</li>
+        <li>Доступ к закрытому чату с экспертом</li>
+        <li>Доступ к материалам на 12 месяцев</li>
+      </ul>
+
+      <a href="" class="v-tarif__btn">
+        <img src="../images/dist/coin-dark-ico.svg" alt="">
+        69 990 ₸
+      </a>
+    </div>
+
+    <div class="v-tarif__item v-tarif__item--yellow v-tarif__item--active">
+      <p class="v-tarif__item-title">Тариф «Практикующий бухгалтер»</p>
+
+      <ul class="v-tarif__item-ul">
+        <li>Всё из тарифа «Базовый бухгалтер»</li>
+        <li>Разбор реальных кейсов по налогам и отчётности</li>
+        <li>Проверка домашних заданий</li>
+        <li>Обратная связь по вашим рабочим ситуациям</li>
+        <li>Доступ к закрытому чату с экспертом</li>
+        <li>Доступ к материалам на 12 месяцев</li>
+      </ul>
+
+      <a href="" class="v-tarif__btn">
+        Активен до 7 марта
+      </a>
+    </div>
+
+
+    <div class="v-tarif__item v-tarif__item--purple">
+      <p class="v-tarif__item-title">Тариф «Практикующий бухгалтер»</p>
+
+      <ul class="v-tarif__item-ul">
+        <li>Всё из тарифа «Базовый бухгалтер»</li>
+        <li>Разбор реальных кейсов по налогам и отчётности</li>
+        <li>Проверка домашних заданий</li>
+        <li>Обратная связь по вашим рабочим ситуациям</li>
+        <li>Доступ к закрытому чату с экспертом</li>
+        <li>Доступ к материалам на 12 месяцев</li>
+      </ul>
+
+      <a href="" class="v-tarif__btn">
+        <img src="../images/dist/coin-white-ico.svg" alt="">
+        69 990 ₸
+      </a>
+    </div>
+
+    <div class="v-tarif__item v-tarif__item--purple v-tarif__item--active">
+      <p class="v-tarif__item-title">Тариф «Практикующий бухгалтер»</p>
+
+      <ul class="v-tarif__item-ul">
+        <li>Всё из тарифа «Базовый бухгалтер»</li>
+        <li>Разбор реальных кейсов по налогам и отчётности</li>
+        <li>Проверка домашних заданий</li>
+        <li>Обратная связь по вашим рабочим ситуациям</li>
+        <li>Доступ к закрытому чату с экспертом</li>
+        <li>Доступ к материалам на 12 месяцев</li>
+      </ul>
+
+      <a href="" class="v-tarif__btn">
+        Активен до 7 марта
+      </a>
+    </div>
+  </div>
+
+  <div id="popup1" class="popup-window" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="popup-window__overlay" data-popup-close></div>
+    <div class="popup-window__content" role="document" tabindex="-1">
+      <button class="popup-window__close" data-popup-close aria-label="Закрыть">&times;</button>
+      <p class="popup-title">Оцените курс</p>
+
+      <p class="v-rating-text">Поставьте оценку:</p>
+      <div class="v-rating" data-rating="0">
+        <input type="hidden" name="rating" id="rating-value" value="0">
+        <span class="v-rating__star" data-value="1" data-popup-open="popup-rating-1">&#9733;</span>
+        <span class="v-rating__star" data-value="2" data-popup-open="popup-rating-2">&#9733;</span>
+        <span class="v-rating__star" data-value="3" data-popup-open="popup-rating-3">&#9733;</span>
+        <span class="v-rating__star" data-value="4" data-popup-open="popup-rating-4">&#9733;</span>
+        <span class="v-rating__star" data-value="5" data-popup-open="popup-rating-5">&#9733;</span>
+      </div>
+
+      <textarea class="popup-textarea" data-autosize placeholder="Ваш комментарий" rows="2"></textarea>
+      <div class="popup-action">
+        <button class="popup-action-btn" type="submit">Отправить</button>
+      </div>
+    </div>
+  </div>
+  <!--#include virtual="./parts/nav.html" -->
+</div>
+
+<!--#include virtual="./parts/footer.html" -->

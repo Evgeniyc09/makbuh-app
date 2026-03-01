@@ -14,8 +14,7 @@
 
 .popup-window__content {
   position: relative;
-  background: rgba(#fff, 0.6);
-  backdrop-filter: blur(4px);
+  background: #fff;
   border-radius: 12px;
   padding: 24px;
   width: 90%;
@@ -24,25 +23,6 @@
 
   &:focus-visible {
     outline: none;
-  }
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.4) 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 1px;
   }
 }
 
@@ -67,13 +47,39 @@
   color: #000;
 }
 
+.v-rating {
+  display: flex;
+  justify-content: center;
+  gap: 0 14px;
+  font-size: 38px;
+  cursor: pointer;
+  user-select: none;
+  margin: 0 0 10px;
+}
+
+.v-rating-text {
+  text-align: center;
+  color: #373737;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 10px 0 0;
+}
+
+.v-rating__star {
+  color: #cccccc;
+  transition: color 0.3s;
+}
+
+.v-rating__star.filled {
+  color: #583150;
+}
+
 .popup-title {
-  font-size: 30px;
-  line-height: 33px;
-  font-family: "Bebas", sans-serif;
+  font-size: 28px;
+  color: #2f2f2f;
   margin: 0 0 24px;
   text-align: center;
-  color: #313131;
+  font-weight: 500;
 }
 
 .popup-description {
@@ -91,6 +97,7 @@
   border-radius: 8px;
   border: none;
   padding: 15px;
+  resize: none;
 
   &:focus {
     outline: none;
@@ -100,39 +107,18 @@
   margin: 22px 0 0;
   text-align: center;
 }
-
 .popup-action-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-radius: 20px;
-  position: relative;
-  font-size: 12px;
-  padding: 0 35px;
-  color: white;
-  height: 40px;
+  padding: 14px 22px;
+  font-size: 16px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: #583150;
   border: none;
-  background: linear-gradient(119.93deg, #987879 -9.04%, #e4b4b5 143.26%);
-  backdrop-filter: blur(4px);
+  outline: none;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0.1) 50%,
-      rgba(255, 255, 255, 0.4) 100%
-    );
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 1px;
+  &--disable {
+    opacity: 0.4;
+    pointer-events: none;
   }
 }
 @keyframes popupFadeIn {
