@@ -1025,7 +1025,7 @@
 }
 
 .stories {
-  background: #000;
+  background: #fff;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -1047,8 +1047,6 @@
 .story img,
 .story video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .story-btn {
